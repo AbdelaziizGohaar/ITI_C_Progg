@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1731932532 source:/home/gohaar/Desktop/C LABS/Day3/arrayProj/ArrayProj/main.c
+	<stdio.h>
+	<stdlib.h>
+
