@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1732022884 source:/home/gohaar/Desktop/C LABS/Day3/MagicBox/main.c
+	<stdio.h>
+	<unistd.h>
+	<stdio.h>
+	<unistd.h>
+

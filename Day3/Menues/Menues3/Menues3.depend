@@ -12,3 +12,14 @@
 	<stdlib.h>
 	<string.h>
 
+1732024600 source:/home/gohaar/Desktop/C LABS/Day3/Menues/Menues3/clean.c
+
+1731981065 /home/gohaar/Desktop/C LABS/Day3/Menues/Menues3/mina.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	<io.h>
+	<unistd.h>
+	<termios.h>
+

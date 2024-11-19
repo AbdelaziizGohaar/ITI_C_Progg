@@ -33,8 +33,8 @@ int main()
         }
     }
 
-    printf("max element = %d\n", max);
-    printf("min element = %d", min);
+    printf("maximum element = %d\n", max);
+    printf("minimum element = %d", min);
 
     return 0;
 }

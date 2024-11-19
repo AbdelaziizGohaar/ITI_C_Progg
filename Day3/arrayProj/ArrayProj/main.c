@@ -13,7 +13,7 @@ int main()
 
     for(int i=0; i<SIZE; i++)
     {
-        printf("Enter element %d to the array: ",(i+1));
+        printf("Enter elements %d : ",(i+1));
         scanf("%d", &arr[i]);
     }
     printf("Enter number of rows: ");
