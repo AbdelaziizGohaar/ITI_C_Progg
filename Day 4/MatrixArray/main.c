@@ -13,11 +13,12 @@ int numValu = 0;
 int rowSum = 0;
 int rowcounter = 0;
 
-int colavg0 = 0 ;
-int colavg1 = 0 ;
-int colavg2 = 0 ;
-int colavg3 = 0 ;
+//int colavg0 = 0 ;
+//int colavg1 = 0 ;
+//int colavg2 = 0 ;
+//int colavg3 = 0 ;
 
+int colavg = 0 ;
 int colCounter = 0 ;
 
  for(int j = 0 ; j < ROWS ; j++){
@@ -71,24 +72,39 @@ int colCounter = 0 ;
              rowSum = 0 ;
             }
    }
-///// print the avg col
-            if(i == 0){
-            colavg0 = colavg0 + arr[j][i] ;
-            }else if (i == 1){
-               colavg1 = colavg1 + arr[j][i] ;
-            }else if(i==2){
-               colavg2 = colavg2 + arr[j][i] ;
-            }else if(i==3){
-                colavg3 = colavg3 + arr[j][i] ;
-            }
 
 }
 
+
+
+
+ for(int j = 0 ; j < COLS ; j++){
+  for(int i = 0 ; i < ROWS +1; i++){
+     // here inside col        colavg , colCounter   rowSum  rowcounter
+ //  printf("arr[%d][%d] = %d\n", i, j, arr[j][i]);
+
+           if(colCounter < 3){
+            colavg = colavg + arr[i][j] ;
+            colCounter = colCounter +1 ;
+            }else{
+             printf("the column %d avg is = %d \n",j,colavg/3 ) ;
+              colCounter = 0;
+             colavg = 0 ;
+            }
+   }
+
+}
+
+
+
+
+
+/*
  printf("the col 0 avg is = %d \n",colavg0 ) ;
  printf("the col 1 avg is = %d \n",colavg1 ) ;
  printf("the col 2 avg is = %d \n",colavg2 ) ;
  printf("the col 3 avg is = %d \n",colavg3 ) ;
-
+*/
 
    return 0;
 
