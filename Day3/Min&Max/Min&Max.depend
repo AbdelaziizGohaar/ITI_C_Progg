@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1731991320 source:/home/gohaar/Desktop/C LABS/Day3/Min&Max/main.c
+	<stdio.h>
+	<stdlib.h>
+

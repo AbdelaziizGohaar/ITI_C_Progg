@@ -2,12 +2,15 @@
 #include <stdlib.h>
 #include "conio.h"
 //#include "mina.h"
-#define UP 72
-#define DOWN 80
+#define UP 65
+#define DOWN 66
+#define ENTER 10
+#define EXIT 113
 
 int main()
 {
 int input;
+int currentPos = 5;
 
 //printf(" \t\t MenuItem1 \n\n\n\n");
 //printf(" \t\t MenuItem2 \n\n\n\n");
@@ -15,27 +18,170 @@ int input;
 
 
     gotoxy(25, 5); // Move cursor to column 10, row 5
-    printf("MenuItem1");
+    setTextColor(stdout, TC_BLUE);
+    printf("New");
 
     gotoxy(25, 10); // Move cursor to column 20, row 8
-    printf("MenuItem2");
+    printf("Display");
 
     gotoxy(25, 15); // Move cursor to column 0, row 10
-    printf("MenuItem3");
-
-            char ch =0 ;
-            ch = getch();
-//     printf("\nYou entered: %c\n", ch);
+    printf("Exit");
 
 
+    while(1){
 
+     char ch =0 ;
+    ch = getch();
+
+     if(ch ==27){
+       ch = getch();
+       ch = getch();
+
+       //// enter switch here ya aziz
+
+        switch (ch) {
+        case DOWN: {
+            clear();
+
+            if(currentPos = 5){
+
+            gotoxy(25, 5);
+            setTextColor(stdout, TC_WHITE);
+           printf("New");
+
+            gotoxy(25, 10);
+            setTextColor(stdout, TC_BLUE);
+            printf("Display");
+
+
+            gotoxy(25, 15);
+            setTextColor(stdout, TC_WHITE);
+            printf("Exit");
+
+            currentPos = 10;
+
+            } else if(currentPos = 10){
+
+            gotoxy(25, 5);
+            setTextColor(stdout, TC_WHITE);
+           printf("New");
+
+            gotoxy(25, 10);
+            setTextColor(stdout, TC_WHITE);
+            printf("Display");
+
+
+            gotoxy(25, 15);
+            setTextColor(stdout, TC_BLUE);
+            printf("Exit");
+
+             currentPos = 15;
+            }else if(currentPos = 15){
+
+            printf("This is the Last menuItem press another Key");
+
+            }
+            break;
+        }
+//      case UP: printf("\n Up arrow : \n"); break;
+         case UP: {
+            clear();
+
+            if(currentPos = 15){
+
+            gotoxy(25, 5);
+            setTextColor(stdout, TC_WHITE);
+           printf("New");
+
+            gotoxy(25, 10);
+            setTextColor(stdout, TC_BLUE);
+            printf("Display");
+
+
+            gotoxy(25, 15);
+            setTextColor(stdout, TC_WHITE);
+            printf("Exit");
+
+            currentPos = 10;
+
+            } else if(currentPos = 10){
+
+            gotoxy(25, 5);
+            setTextColor(stdout, TC_BLUE);
+           printf("New");
+
+            gotoxy(25, 10);
+            setTextColor(stdout, TC_WHITE);
+            printf("Display");
+
+
+            gotoxy(25, 15);
+            setTextColor(stdout, TC_WHITE);
+            printf("Exit");
+
+             currentPos = 5;
+            }else if(currentPos = 15){
+
+            printf("This is the first menuItem press another Key");
+
+            }
+            break;
+        }case ENTER: {
+            clear();
+
+            if(currentPos = 15){
+
+            gotoxy(25, 15);
+            setTextColor(stdout, TC_WHITE);
+            printf("Exit");
+
+            } else if(currentPos = 10){
+
+
+            gotoxy(25, 10);
+            setTextColor(stdout, TC_WHITE);
+            printf("Display");
+
+
+            }else if(currentPos = 5){
+
+            gotoxy(25, 10);
+            setTextColor(stdout, TC_WHITE);
+            printf("New");
+
+            }
+
+            break;
+        }
+        default:  printf("\n  \n"); break;
+    }
+
+
+
+
+
+}
+
+
+     //   printf("\nYou entered: %d\n", ch);
 /*
 
-     if(ch ==-32){
-        printf("\n  arrows clicked \n");
-       char ch = getch();
+
+     if(ch ==27){
+
+    //    printf("\n  arrows clicked \n");
+       ch = getch();
+       ch = getch();
+
+         printf("\nYou entered: %d\n", ch);
      if(ch ==UP){
          printf("\n upper arrow clicked \n");
+       }else
+     {
+        printf("\n xxxxxxx : \n");
+     }
+     if(ch ==DOWN){
+         printf("\n lower arrow clicked \n");
        }else
      {
         printf("\n xxxxxxx : \n");
@@ -45,13 +191,39 @@ int input;
            printf("\n not = -32 \n");
 }
 
-
 */
+////////////////////////////
+
 
 /*
-       switch (getch()) {
+       switch (ch) {
+        case DOWN: {
+            clear();
+
+            gotoxy(25, 5);
+            setTextColor(stdout, TC_WHITE);
+             printf("New");
+
+            gotoxy(25, 10);
+            setTextColor(stdout, TC_BLUE);
+            printf("Display");
+
+
+            gotoxy(25, 15);
+            setTextColor(stdout, TC_WHITE);
+            printf("Exit");
+
+            break;
+        }
         case 'A': printf("\n Up arrow : \n"); break;
         case 'B': printf("\n down arrow : \n"); break;
+         case 1: {
+            printf("You selected 1.\n");
+            printf("Performing operations for case 1.\n");
+            int result = 1 + 1; // Example operation
+            printf("Result: %d\n", result);
+            break;
+        }
         default:  printf("\n nooo \n"); break;
     }
 

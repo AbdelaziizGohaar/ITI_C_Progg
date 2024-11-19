@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define SIZE 9
+#define SIZE 6
 
 int main()
 {
     int arr[SIZE] ={1};
-    int row,col,i,j;
+    int row = 0;
+    int col = 0;
+    int i =0 ;
+    int j = 0;
 
 
     for(int i=0; i<SIZE; i++)

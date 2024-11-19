@@ -4,8 +4,11 @@
 int pow (int num,int pow);
 int main()
 {
-    int num ,pow, result ;
-    pow =num =result =0;
+    int num ;
+    int pow;
+    int result ;
+    pow = num =result =0;
+
     printf ("enter a number to calculate it's power: ");
     scanf(" %d",&num);
     printf ("enter number's power: ");
@@ -15,6 +18,12 @@ int main()
     printf("%d ^ %d = %d", num,pow,result);
     return 0;
 }
+
+
+
+
+
+
 int power(int num, int pow){
     if (num<0){
         return -1;
