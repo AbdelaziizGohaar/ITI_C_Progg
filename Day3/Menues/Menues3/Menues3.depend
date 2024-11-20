@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1732005183 source:/home/gohaar/Desktop/C LABS/Day3/Menues/Menues3/main.c
+1732055050 source:/home/gohaar/Desktop/C LABS/Day3/Menues/Menues3/main.c
 	<stdio.h>
 	<stdlib.h>
-	"conio.h"
+	"mina.h"
 
 1731938256 /home/gohaar/Desktop/C LABS/Day3/Menues/Menues3/conio.h
 	<termios.h>

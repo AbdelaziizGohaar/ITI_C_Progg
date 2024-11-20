@@ -54,7 +54,12 @@ int colCounter = 0 ;
 
 }
 
-
+for(int j = 0 ; j < ROWS ; j++){
+  for(int i = 0 ; i < COLS ; i++){
+   printf("%d \t", arr[j][i]);
+}
+printf("\n");
+  }
 
 
 
