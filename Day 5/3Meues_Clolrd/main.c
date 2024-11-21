@@ -20,13 +20,14 @@ struct BD {
  struct Employee {
  int id ;
  char name[20] ;
- int age ;
  int salary ;
+ int age ;
  struct BD b ;
  };
 
-void enterNewEmp_void();
+void enterNewEmp_void(struct Employee emp[],int currentIndex) ;
 void showMenuAfterExitNew();
+ void displayEmp_Void(struct Employee emp[]);
 // void addNewUser_void(struct Employee e[]);
 
 int main()
@@ -249,7 +250,7 @@ int main()
 
 
 //// new Function to add User
-void enterNewEmp_void(struct Employee emp[],int currentIndex){
+void enterNewEmp_void2(struct Employee emp[],int currentIndex){
  char decistion = 'y';
  // struct Employee emp[EMP_SIZE]={0};
  int empId = 0;
@@ -258,52 +259,56 @@ void enterNewEmp_void(struct Employee emp[],int currentIndex){
 // int currentIndex = 0;
 
   while(decistion == 'y')
-  {
-
-  clear();
-
-   printf(" \n Do You Want to enter New User ?  y/n   \n ");
+ {
+    clear();
+    printf(" \n Do You Want to enter New User ?  y/n   \n ");
 
         decistion = getch();
 
       if(decistion == 'Y' || decistion == 'y'  )
     {
-      if (currentIndex < EMP_SIZE)
-    {
-     printf("Enter the Employe ID  \n ");
-      scanf("%d",&emp[currentIndex].id);
+          if (currentIndex < EMP_SIZE)
+       {
+          if(emp[currentIndex].id == 0 )
+          {
 
-     printf("Enter the Employe Name  \n ");
-      scanf("%s",&emp[currentIndex].name);
+            printf("Enter the Employe ID  \n ");
+            scanf("%d",&emp[currentIndex].id);
 
-     printf("Enter the Employe age  \n ");
-           scanf("%d",&emp[currentIndex].age);
-/*
-      printf("Enter the Employe Salary  \n ");
-           scanf("%d",&emp[currentIndex].salary);
+           printf("Enter the Employe Name  \n ");
+           scanf("%s",&emp[currentIndex].name);
+             getch();
 
-      printf("Enter the Employe Birth day  \n ");
-           scanf("%d",&emp[currentIndex].b.Day);
+             printf("Enter the Employe Salary  \n ");
+            scanf("%d",&emp[currentIndex].salary);
 
-      printf("Enter the Employe Birth month  \n ");
-           scanf("%d",&emp[currentIndex].b.Month);
-
-      printf("Enter the Employe Birth year  \n ");
-           scanf("%d",&emp[currentIndex].b.year);
-*/
-        }
+          }else
+             {
+                for(int i = 0 ; i < EMP_SIZE ; i++)
+              {
+                if(emp[i].id == 0)
+               {
+                 currentIndex = i ;
+                 i = EMP_SIZE ;
+                }
+               }
+              } // else end
+                currentIndex= currentIndex + 1  ;
+          }
 
         //decistion = 'Y' ;
-     }else if(decistion == 'N' || decistion == 'n'  )
+     } // decisition = y
+     else if(decistion == 'N' || decistion == 'n'  )
      {
-        printf("We are in the No Section  \n ");
+      //  printf("We are in the No Section  \n ");
         decistion = 'n' ;
-     }else
+     }
+     else
      {
      printf("error please answer with y/n");
      };
 
-
+    getch();
   } //end of while loop
 
 
@@ -328,7 +333,77 @@ void showMenuAfterExitNew()
  }
 
 
+
+
  void displayEmp_Void(struct Employee emp[])
+ {
+ clear();
+int i = 0 ;
+
+  while(emp[i].id != 0  )
+  {
+    printf("Employee %d id = %d \t",i,emp[i].id);
+    printf("Employee %d name  = %s \t",i,emp[i].name);
+    printf("Employee %d salary  = %d \n",i,emp[i].salary);
+      i++;
+  }
+
+ }
+
+
+
+void enterNewEmp_void(struct Employee emp[], int currentIndex) {
+    char decision = 'y';
+
+    while (decision == 'y')
+    {
+        clear(); // Clear the screen if required.
+        printf(" \n Do you want to enter a new user? (y/n): \n");
+
+        decision = getch();
+
+        if (decision == 'y' || decision == 'Y') {
+            if (currentIndex < EMP_SIZE) {
+
+                while (currentIndex < EMP_SIZE && emp[currentIndex].id != 0) {
+                    currentIndex++;
+                }
+
+                if (currentIndex < EMP_SIZE) {
+                    printf("Enter the Employee ID: ");
+                    scanf("%d", &emp[currentIndex].id);
+
+                    printf("Enter the Employee Name: ");
+                    scanf("%s", emp[currentIndex].name); // No need for `&` with char arrays.
+
+                    printf("Enter the Employee Salary: ");
+                    scanf("%d", &emp[currentIndex].salary);
+
+
+                    // Move to the next index for the next employee.
+                    currentIndex++;
+                } else {
+                    printf("Employee list is full.\n");
+                    decision = 'n'; // Exit the loop since no more entries can be made.
+                }
+            }
+        } else if (decision == 'n' || decision == 'N')
+        {
+          decision = 'n'; // Exit the loop since no more entries can be made.
+        } else {
+            printf("Invalid input. Please answer with 'y' or 'n'.\n");
+        }
+
+            getch();
+    }
+}
+
+
+
+
+
+/*
+ void displayEmp_Void_2(struct Employee emp[])
  {
  clear();
  int i = 0 ;
@@ -338,27 +413,9 @@ void showMenuAfterExitNew()
         textcolor(WHITE);
         printf("%s\n", emp[i].name);  // Print the employee's name
     }
-
-
  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 
 /*
