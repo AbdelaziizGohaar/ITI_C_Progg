@@ -7,7 +7,7 @@
 #define DOWN 66
 #define ENTER 10
 #define EXIT 113
-#define EMP_SIZE 20
+#define EMP_SIZE 10
 #define clear() printf("\033[H\033[J")
 
 struct BD {
@@ -35,6 +35,8 @@ int main()
  // int index = 0;
  int currentPos = 5;
  int EntryPos = 0;
+ struct Employee emp[EMP_SIZE]={0};
+ int currentEmpIndex = 0;
 
 //printf(" \t\t MenuItem1 \n\n\n\n");
 //printf(" \t\t MenuItem2 \n\n\n\n");
@@ -187,9 +189,11 @@ int main()
              EntryPos = 1;
             } else if(currentPos == 10){ /// Display
 
-            gotoxy(25, 10);
-            textcolor(WHITE);
-            printf("Display");
+          //  gotoxy(25, 10);
+          //  textcolor(WHITE);
+          //  printf("Display");
+
+            displayEmp_Void(emp); //////////////////////////////////////// Method Display empls ////////////////////////////////////////
 
              EntryPos = 1;
 
@@ -197,7 +201,7 @@ int main()
 
              EntryPos = 1;
 
-             enterNewEmp_void();      ////////////////////////////////////////////////  method of enter employees /////////////////////////////////////////////////////////////////
+             enterNewEmp_void(emp,currentEmpIndex);  ////////////////////////////////////////////////  method of enter employees /////////////////////////////////////////////////////////////////
 
              clear();
 
@@ -245,13 +249,13 @@ int main()
 
 
 //// new Function to add User
-void enterNewEmp_void(){
+void enterNewEmp_void(struct Employee emp[],int currentIndex){
  char decistion = 'y';
- struct Employee emp[EMP_SIZE]={0};
+ // struct Employee emp[EMP_SIZE]={0};
  int empId = 0;
  char empName = 0;
  int empAge = 0 ;
- int currentIndex = 0;
+// int currentIndex = 0;
 
   while(decistion == 'y')
   {
@@ -324,10 +328,16 @@ void showMenuAfterExitNew()
  }
 
 
- void displayEmp_Void()
+ void displayEmp_Void(struct Employee emp[])
  {
  clear();
+ int i = 0 ;
 
+  for (i = 0; i < EMP_SIZE -1 ; i++) {
+        gotoxy(5, 5 + i);
+        textcolor(WHITE);
+        printf("%s\n", emp[i].name);  // Print the employee's name
+    }
 
 
  }
