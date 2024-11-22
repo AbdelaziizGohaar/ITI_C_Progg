@@ -25,7 +25,7 @@ struct BD {
  struct BD b ;
  };
 
-void enterNewEmp_void(struct Employee emp[],int currentIndex) ;
+void enterNewEmp_void(struct Employee emp[], int currentIndex,int storedIds [] ,int  idCounts);
 void showMenuAfterExitNew();
  void displayEmp_Void(struct Employee emp[]);
 // void addNewUser_void(struct Employee e[]);
@@ -38,6 +38,8 @@ int main()
  int EntryPos = 0;
  struct Employee emp[EMP_SIZE]={0};
  int currentEmpIndex = 0;
+ int storedIds [EMP_SIZE] = {0};
+ int idCounts = 0 ;
 
 //printf(" \t\t MenuItem1 \n\n\n\n");
 //printf(" \t\t MenuItem2 \n\n\n\n");
@@ -55,6 +57,8 @@ int main()
     gotoxy(25, 15); // Move cursor to column 0, row 10
     printf("Exit");
 
+    gotoxy(25, 20); // Move cursor to column 0, row 10
+    printf("Modify");
 
     while(1){
 
@@ -88,6 +92,9 @@ int main()
             //setTextColor(stdout, TC_WHITE);
             printf("Exit");
 
+            gotoxy(25, 20); // Move cursor to column 0, row 10
+            printf("Modify");
+
             currentPos = 10;
             int EntryPos = 0;
 
@@ -107,8 +114,36 @@ int main()
             textcolor(BLUE);
             printf("Exit");
 
+            textcolor(WHITE);
+            gotoxy(25, 20); // Move cursor to column 0, row 10
+            printf("Modify");
+
+
              currentPos = 15;
-            }else if(currentPos = 15){
+            }else if(currentPos == 15){
+
+            gotoxy(25, 5);
+           // setTextColor(stdout, TC_WHITE);
+           printf("New");
+
+            gotoxy(25, 10);
+           // setTextColor(stdout, TC_WHITE);
+            printf("Display");
+
+
+            gotoxy(25, 15);
+            //setTextColor(stdout, TC_BLUE);
+            textcolor(WHITE);
+            printf("Exit");
+
+            textcolor(BLUE);
+            gotoxy(25, 20); // Move cursor to column 0, row 10
+            printf("Modify");
+
+
+             currentPos = 20;
+            }
+            else if(currentPos = 20){
 
          //   printf("This is the Last menuItem press another Key");
 
@@ -119,6 +154,29 @@ int main()
          case UP: {
             clear();
 
+         if(currentPos == 20){
+
+            gotoxy(25, 5);
+          textcolor(WHITE);
+           printf("New");
+
+            gotoxy(25, 10);
+            textcolor(WHITE);
+            printf("Display");
+
+
+            gotoxy(25, 15);
+            textcolor(BLUE);
+            printf("Exit");
+
+            textcolor(WHITE);
+            gotoxy(25, 20); // Move cursor to column 0, row 10
+            printf("Modify");
+
+
+            currentPos = 15;
+
+            } else
             if(currentPos == 15){
 
             gotoxy(25, 5);
@@ -133,6 +191,12 @@ int main()
             gotoxy(25, 15);
             textcolor(WHITE);
             printf("Exit");
+
+
+            textcolor(WHITE);
+            gotoxy(25, 20); // Move cursor to column 0, row 10
+            printf("Modify");
+
 
             currentPos = 10;
 
@@ -151,6 +215,12 @@ int main()
          textcolor(WHITE);
             printf("Exit");
 
+
+            textcolor(WHITE);
+            gotoxy(25, 20); // Move cursor to column 0, row 10
+            printf("Modify");
+
+
              currentPos = 5;
             }else if(currentPos == 5){
 
@@ -166,6 +236,12 @@ int main()
             gotoxy(25, 15);
          textcolor(WHITE);
             printf("Exit");
+
+
+            textcolor(WHITE);
+            gotoxy(25, 20); // Move cursor to column 0, row 10
+            printf("Modify");
+
 
              currentPos = 5;
          //   printf("This is the first menuItem press another Key");
@@ -184,15 +260,15 @@ int main()
            case ENTER: {
             clear();
 
+          if(currentPos == 20)  ///////////////////////////////////////////////////////////// Modify Method
+          {
+           //   exit(0);
+             EntryPos = 1;
+          }else
             if(currentPos == 15){ /// EXIT
-
               exit(0);
              EntryPos = 1;
             } else if(currentPos == 10){ /// Display
-
-          //  gotoxy(25, 10);
-          //  textcolor(WHITE);
-          //  printf("Display");
 
             displayEmp_Void(emp); //////////////////////////////////////// Method Display empls ////////////////////////////////////////
 
@@ -202,7 +278,7 @@ int main()
 
              EntryPos = 1;
 
-             enterNewEmp_void(emp,currentEmpIndex);  ////////////////////////////////////////////////  method of enter employees /////////////////////////////////////////////////////////////////
+             enterNewEmp_void(emp,currentEmpIndex,storedIds, idCounts);  ////////////////////////////////////////////////  method of enter employees /////////////////////////////////////////////////////////////////
 
              clear();
 
@@ -227,6 +303,10 @@ int main()
             gotoxy(25, 15); // Move cursor to column 0, row 10
             printf("Exit");
 
+            gotoxy(25, 20); // Move cursor to column 0, row 10
+            printf("Modify");
+
+
              EntryPos = 0 ;
             } else if(currentPos == 0){
              // printf("we already in main Screen");
@@ -238,7 +318,6 @@ int main()
         default:  printf("\n  \n");
 }
 
-
            }
 
 
@@ -248,6 +327,168 @@ int main()
      return 0;
 }
 
+
+
+void showMenuAfterExitNew()
+ {
+
+    gotoxy(25, 5); // Move cursor new
+    textcolor(BLUE);
+    printf("New");
+   textcolor(WHITE);
+
+    gotoxy(25, 10); // Move cursor Dis
+    printf("Display");
+
+    gotoxy(25, 15); // Move cursor to exxit
+    printf("Exit");
+
+    gotoxy(25, 20); // Move cursor to column 0, row 10
+    printf("Modify");
+
+
+ }
+
+
+
+
+ void displayEmp_Void(struct Employee emp[])
+ {
+ clear();
+int i = 0 ;
+
+  while(emp[i].id != 0  )
+  {
+    printf("Employee %d id = %d \t",i,emp[i].id);
+    printf("Employee %d name  = %s \t",i,emp[i].name);
+    printf("Employee %d salary  = %d \n",i,emp[i].salary);
+      i++;
+  }
+
+ }
+
+
+
+void enterNewEmp_void(struct Employee emp[], int currentIndex,int storedIds [], int idCounts  ) {
+    char decision = 'y';
+
+    while (decision == 'y')
+    {
+        clear(); // Clear the screen if required.
+        printf(" \n Do you want to enter a new user? (y/n): \n");
+
+        decision = getch();
+
+        if (decision == 'y' || decision == 'Y') {
+            if (currentIndex < EMP_SIZE) {
+
+                while (currentIndex < EMP_SIZE && emp[currentIndex].id != 0) {
+                    currentIndex++;
+                }
+
+                if (currentIndex < EMP_SIZE) {
+                    printf("Enter the Employee ID: ");
+                    scanf("%d", &emp[currentIndex].id);
+
+                  /*
+                    while(checkIds_int(emp[currentIndex].id , storedIds,currentEmpIndex) == 0)
+                    {
+                     printf("this ID Is taken Before Enter Another  Employee ID: ");
+                    scanf("%d", &emp[currentIndex].id);
+
+                    }
+                    */
+                     // Check if the ID is unique
+                    while (checkIds_int(emp[currentIndex].id, storedIds, idCounts) == 0) {
+                        printf("This ID is already taken. Enter another Employee ID: ");
+                        scanf("%d", &emp[currentIndex].id);
+                        getchar(); // Consume the newline character left by scanf()
+                    }
+
+                    // Add the ID to storedIds
+                    storedIds[idCounts] = emp[currentIndex].id;
+                    (idCounts)++;
+
+
+                    ///////////////////////////////////////////////////////////////
+
+                    printf("Enter the Employee Name: ");
+                    scanf("%s", emp[currentIndex].name); // No need for `&` with char arrays.
+
+                    printf("Enter the Employee Salary: ");
+                    scanf("%d", &emp[currentIndex].salary);
+
+
+                    // Move to the next index for the next employee.
+                    currentIndex++;
+                } else {
+                    printf("Employee list is full.\n");
+                    decision = 'n'; // Exit the loop since no more entries can be made.
+                }
+            }
+        } else if (decision == 'n' || decision == 'N')
+        {
+          decision = 'n'; // Exit the loop since no more entries can be made.
+        } else {
+            printf("Invalid . Please answer with 'y' or 'n'.\n");
+        }
+
+            getch();
+    }
+}
+
+
+
+
+
+
+int checkIds_int(int id, int storedIds[], int size) {
+    for (int i = 0; i < size; i++) {
+        if (id == storedIds[i])
+        {
+            return 0; // ID found
+        }
+    }
+    return 1; // ID not found
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+ int checkIds_int(int id , int storedIds [EMP_SIZE][EMP_SIZE]  )
+ {
+    for (int i = 0 ; i < storedIds.lenght-1 ; i++)
+    {
+       if(id == storedIds[i])
+       {
+         return 0 ;
+
+       }else
+       {
+         return 1;
+       }
+
+    }
+
+ }
+
+
+
+
+
+
+
+/*
 
 //// new Function to add User
 void enterNewEmp_void2(struct Employee emp[],int currentIndex){
@@ -316,87 +557,10 @@ void enterNewEmp_void2(struct Employee emp[],int currentIndex){
 
 
 
-void showMenuAfterExitNew()
- {
-
-    gotoxy(25, 5); // Move cursor new
-    textcolor(BLUE);
-    printf("New");
-   textcolor(WHITE);
-
-    gotoxy(25, 10); // Move cursor Dis
-    printf("Display");
-
-    gotoxy(25, 15); // Move cursor to exxit
-    printf("Exit");
-
- }
 
 
 
 
- void displayEmp_Void(struct Employee emp[])
- {
- clear();
-int i = 0 ;
-
-  while(emp[i].id != 0  )
-  {
-    printf("Employee %d id = %d \t",i,emp[i].id);
-    printf("Employee %d name  = %s \t",i,emp[i].name);
-    printf("Employee %d salary  = %d \n",i,emp[i].salary);
-      i++;
-  }
-
- }
-
-
-
-void enterNewEmp_void(struct Employee emp[], int currentIndex) {
-    char decision = 'y';
-
-    while (decision == 'y')
-    {
-        clear(); // Clear the screen if required.
-        printf(" \n Do you want to enter a new user? (y/n): \n");
-
-        decision = getch();
-
-        if (decision == 'y' || decision == 'Y') {
-            if (currentIndex < EMP_SIZE) {
-
-                while (currentIndex < EMP_SIZE && emp[currentIndex].id != 0) {
-                    currentIndex++;
-                }
-
-                if (currentIndex < EMP_SIZE) {
-                    printf("Enter the Employee ID: ");
-                    scanf("%d", &emp[currentIndex].id);
-
-                    printf("Enter the Employee Name: ");
-                    scanf("%s", emp[currentIndex].name); // No need for `&` with char arrays.
-
-                    printf("Enter the Employee Salary: ");
-                    scanf("%d", &emp[currentIndex].salary);
-
-
-                    // Move to the next index for the next employee.
-                    currentIndex++;
-                } else {
-                    printf("Employee list is full.\n");
-                    decision = 'n'; // Exit the loop since no more entries can be made.
-                }
-            }
-        } else if (decision == 'n' || decision == 'N')
-        {
-          decision = 'n'; // Exit the loop since no more entries can be made.
-        } else {
-            printf("Invalid input. Please answer with 'y' or 'n'.\n");
-        }
-
-            getch();
-    }
-}
 
 
 
