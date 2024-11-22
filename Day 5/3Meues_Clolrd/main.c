@@ -3,6 +3,9 @@
 #include "conio.h"
 // #include "mina.h"
 
+#define RIGHT 67
+#define LEFT 68
+
 #define UP 65
 #define DOWN 66
 #define ENTER 10
@@ -29,6 +32,8 @@ void enterNewEmp_void(struct Employee emp[], int currentIndex,int storedIds [] ,
 void showMenuAfterExitNew();
  void displayEmp_Void(struct Employee emp[]);
 // void addNewUser_void(struct Employee e[]);
+void modify_void();
+void showOptionsOFModifiedScreen_Void();
 
 int main()
 {
@@ -254,7 +259,8 @@ int main()
 
 }
 
-   if(ch == ENTER || ch == EXIT  ){
+   if(ch == ENTER || ch == EXIT  )
+   {
 
          switch (ch) {
            case ENTER: {
@@ -262,8 +268,8 @@ int main()
 
           if(currentPos == 20)  ///////////////////////////////////////////////////////////// Modify Method
           {
-           //   exit(0);
-             EntryPos = 1;
+           modify_void() ;
+           EntryPos = 1;
           }else
             if(currentPos == 15){ /// EXIT
               exit(0);
@@ -318,7 +324,7 @@ int main()
         default:  printf("\n  \n");
 }
 
-           }
+        }
 
 
 }
@@ -439,9 +445,6 @@ void enterNewEmp_void(struct Employee emp[], int currentIndex,int storedIds [], 
 
 
 
-
-
-
 int checkIds_int(int id, int storedIds[], int size) {
     for (int i = 0; i < size; i++) {
         if (id == storedIds[i])
@@ -454,11 +457,212 @@ int checkIds_int(int id, int storedIds[], int size) {
 
 
 
+ void modify_void()
+ {
+ int empId = 0 ;
+
+     textcolor(WHITE);
+     clear();
+     printf(" \n Enter  ID You want to Modify: \n");
+     scanf("%d", &empId);
+
+     printf(" \n Choose what you wants : \n");
+     showOptionsOFModifiedScreen_Void ();
 
 
 
+ }
 
 
+
+ void showOptionsOFModifiedScreen_Void ()
+ {
+ char ch = 0 ;
+int  currentModifyPos = 5 ;
+ int EntryPos = 0;
+
+clear();
+    gotoxy(5, 7); // Move cursor new
+    textcolor(BLUE);
+    printf("Change Name");
+   textcolor(WHITE);
+
+    gotoxy(20, 7); // Move cursor Dis
+    printf("Change salary");
+
+    gotoxy(35, 7); // Move cursor to exxit
+    printf("Delete");
+
+ while(1)
+ {
+
+
+    getch();
+   ch = getch();
+
+     if(ch ==27 ){
+       ch = getch();
+       ch = getch();
+
+       //// enter switch here ya aziz
+
+     switch (ch) {
+        case RIGHT: {
+            // clear();
+			// print("%d\n")
+            if(currentModifyPos == 5){
+
+            gotoxy(5, 7);
+           printf("Change Name");
+
+            gotoxy(20, 7);
+            textcolor(BLUE);
+            printf("Change Salary");
+             textcolor(WHITE);
+
+            gotoxy(35, 7);
+            printf("Delete");
+
+            currentModifyPos = 20;
+            int EntryPos = 0;
+
+            } else if(currentModifyPos == 20){
+
+            textcolor(WHITE);
+            gotoxy(5, 7);
+            printf("Change Name");
+
+            gotoxy(20, 7);
+            textcolor(WHITE);
+            printf("Change Salary");
+
+             textcolor(BLUE);
+            gotoxy(35, 7);
+            printf("Delete");
+
+             currentModifyPos = 35;
+            }
+            else if(currentModifyPos = 35)
+            {
+         //   printf("This is the Last menuItem press another Key");
+            }
+            break;
+        }
+         case LEFT: {
+            clear();
+
+         if(currentModifyPos == 35){
+
+            textcolor(WHITE);
+            gotoxy(5, 7);
+            printf("Change Name");
+
+            gotoxy(20, 7);
+            textcolor(BLUE);
+            printf("Change Salary");
+
+             textcolor(WHITE);
+            gotoxy(35, 7);
+            printf("Delete");
+
+
+            currentModifyPos = 20;
+
+            } else
+            if(currentModifyPos == 20){
+
+            textcolor(BLUE);
+            gotoxy(5, 7);
+            printf("Change Name");
+
+            gotoxy(20, 7);
+            textcolor(WHITE);
+            printf("Change Salary");
+
+             textcolor(WHITE);
+            gotoxy(35, 7);
+            printf("Delete");
+
+
+            currentModifyPos = 5;
+
+            } else if(currentModifyPos == 5){
+
+            textcolor(BLUE);
+            gotoxy(5, 7);
+            printf("Change Name");
+
+            gotoxy(20, 7);
+            textcolor(WHITE);
+            printf("Change Salary");
+
+             textcolor(WHITE);
+            gotoxy(35, 7);
+            printf("Delete");
+
+
+             currentModifyPos = 5;
+            }
+            break;
+        }
+        default:  printf("\n  \n");
+    }
+ /// end of switch
+
+  } // end of if clause of right and Down
+
+
+
+     if(ch == ENTER || ch == EXIT  )
+   {
+
+         switch (ch) {
+           case ENTER: {
+            clear();
+
+          if(currentModifyPos == 35) /// EXIT
+          {
+
+             EntryPos = 1;
+          } else
+         if(currentModifyPos == 20) /// Display
+         {
+
+
+             EntryPos = 1;
+          }else
+          if(currentModifyPos == 5)  /// New
+          {
+
+             EntryPos = 1;
+             clear();
+             showMenuAfterExitNew();  /// show meues again
+          }
+
+           break;
+        }
+           case EXIT: {
+            clear();
+      if(EntryPos == 1)
+      {
+             showMenuAfterExitNew();  /// show meues again
+
+             EntryPos = 0 ;
+            } else if(currentModifyPos == 0){
+             // printf("we already in main Screen");
+                   // Close the terminal
+                 exit(0);
+            }
+            break;
+        }
+        default:  printf("\n  \n");
+ }
+
+        } //// end of if clause of exit and enter
+
+ } // end of while
+
+} /// end of Function
 
 
 
