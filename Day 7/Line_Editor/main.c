@@ -24,6 +24,7 @@ int main()
 
 int array_size;
 array_size = sizeof(lineEitor) / sizeof(char);
+int insertStatus = 0;  /// no focus
 
 
   ptrHead = lineEitor;
@@ -42,6 +43,12 @@ array_size = sizeof(lineEitor) / sizeof(char);
 
        if(ch == LEFT)
        {
+        if(insertStatus == 1)
+         {
+
+         } else
+         {
+
           if(ptrCurrent == ptrHead)
           {
 
@@ -65,9 +72,16 @@ array_size = sizeof(lineEitor) / sizeof(char);
 
             } //end of else statments of colors
          } // end of for loop
+        } /// insert is 0 no focus
        } // end of left arrow
        else if(ch == RIGHT)
        {
+       if(insertStatus == 1)
+       {
+
+       }else
+       {
+
          if(ptrCurrent == ptrTail)
           {
 
@@ -92,6 +106,7 @@ array_size = sizeof(lineEitor) / sizeof(char);
             } //end of else statments of colors
          } // end of for loop
 
+         } /// insert is 0 no focus
        } // end of Rght arroe
 
        else if(ch == DELETE)
@@ -179,6 +194,19 @@ array_size = sizeof(lineEitor) / sizeof(char);
 
        } // end of the End section
 
+       else if(ch == INSERT)
+       {
+         char xx=0;
+             xx = getch();
+         if(insertStatus == 0)
+         {
+          insertStatus = 1 ;
+         }else
+         {
+           insertStatus = 0;
+         }
+
+       }// end of insert
 
        }/// END OF EXTENDED CHAR
        else  /// BEGIN NORMAL CHAR
@@ -221,7 +249,39 @@ array_size = sizeof(lineEitor) / sizeof(char);
          } // end of for loop
 
         }else {
-        /// populate this char in array then clear screen and draw again
+                /// populate this char in array then clear screen and draw again   &&&***Insert New Char ****&&&
+
+
+     if(insertStatus == 1) /// Activate the Focus
+      {
+         *ptrCurrent = ch;
+          CLEAR();
+
+         for(int i = 0 ; i < array_size ; i++)
+         {
+            if(ptrCurrent == &lineEitor[i])
+            {
+              gotoxy(i+4, 7);
+              textcolor(BLUE);
+              printf("%c", lineEitor[i]);
+            }else{
+
+               gotoxy(i+4, 7);
+              textcolor(WHITE);
+              printf("%c", lineEitor[i]);
+
+            } //end of else statments of colors
+         } // end of for loop
+         if(ptrCurrent == ptrTail)
+         {
+
+         }else
+         {
+         //  ptrCurrent++;      // Move to the next position
+         }
+      } /// End of insert status = 1 ***Focus is on ***
+
+  else { // if no focus
 
          *ptrCurrent = ch;
 
@@ -251,6 +311,8 @@ array_size = sizeof(lineEitor) / sizeof(char);
          {
            ptrCurrent++;      // Move to the next position
          }
+
+       } /// here end of if focus is 0 **no Focus**
         } // end of else od adding chars to screen
 
         } ///  end of else of normal Char

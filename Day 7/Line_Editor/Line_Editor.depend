@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1732408196 source:/home/gohaar/Desktop/C LABS/Day 7/Line_Editor/main.c
+1732410994 source:/home/gohaar/Desktop/C LABS/Day 7/Line_Editor/main.c
 	<stdio.h>
 	<stdlib.h>
 	"conio.h"
