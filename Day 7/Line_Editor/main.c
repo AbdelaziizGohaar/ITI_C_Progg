@@ -94,6 +94,92 @@ array_size = sizeof(lineEitor) / sizeof(char);
 
        } // end of Rght arroe
 
+       else if(ch == DELETE)
+       {
+         // delete next char and then clear screen and draw array again in page
+             char x=0;
+             x = getch();
+
+         ptrCurrent = ptrCurrent +1 ;
+          *ptrCurrent = NULL;
+
+          if (ptrCurrent < ptrTail)
+          {
+            char *temp = ptrCurrent; // Save the current pointer
+             // Shift all elements to the left from ptrCurrent to ptrTail
+               while (temp < ptrTail)
+               {
+                *temp = *(temp + 1); // Copy the next element to the current position
+                  temp++;              // Move to the next position
+                }
+            } // end of swaaping
+
+            CLEAR();
+            /// print data of array on screen again
+
+        for(int i = 0 ; i < array_size ; i++)
+         {
+            if(ptrCurrent == &lineEitor[i])
+            {
+              gotoxy(i+4, 7);
+              textcolor(BLUE);
+              printf("%c", lineEitor[i]);
+            }else{
+
+               gotoxy(i+4, 7); // Move cursor to column 10, row 5
+              textcolor(WHITE);
+              printf("%c", lineEitor[i]);
+
+            } //end of else statments of colors
+         } // end of for loop
+
+        } // end of Delete
+
+         else if (ch == HOME)
+         {
+         ptrCurrent = ptrHead;
+
+         for(int i = 0 ; i < array_size ; i++)
+         {
+            if(ptrCurrent == &lineEitor[i])
+            {
+              gotoxy(i+4, 7);
+              textcolor(BLUE);
+              printf("%c", lineEitor[i]);
+            }else{
+
+               gotoxy(i+4, 7); // Move cursor to column 10, row 5
+              textcolor(WHITE);
+              printf("%c", lineEitor[i]);
+
+            } //end of else statments of colors
+         } // end of for loop
+
+       } // end of home
+
+       else if(ch == END)
+       {
+         ptrCurrent = ptrTail;
+
+         for(int i = 0 ; i < array_size ; i++)
+         {
+            if(ptrCurrent == &lineEitor[i])
+            {
+              gotoxy(i+4, 7);
+              textcolor(BLUE);
+              printf("%c", lineEitor[i]);
+            }else{
+
+               gotoxy(i+4, 7); // Move cursor to column 10, row 5
+              textcolor(WHITE);
+              printf("%c", lineEitor[i]);
+
+            } //end of else statments of colors
+         } // end of for loop
+
+       } // end of the End section
+
+
        }/// END OF EXTENDED CHAR
        else  /// BEGIN NORMAL CHAR
         {
@@ -133,7 +219,6 @@ array_size = sizeof(lineEitor) / sizeof(char);
 
             } //end of else statments of colors
          } // end of for loop
-
 
         }else {
         /// populate this char in array then clear screen and draw again
